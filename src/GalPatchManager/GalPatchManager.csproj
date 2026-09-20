@@ -1,0 +1,37 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>GalPatchManager</RootNamespace>
+    <AssemblyName>GalPatchManager</AssemblyName>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+
+    <Version>1.1.0</Version>
+    <Product>游戏补丁安装器</Product>
+    <AssemblyTitle>游戏补丁安装器</AssemblyTitle>
+    <Company>Local</Company>
+
+    <!-- 单文件发布友好：裁剪关闭，避免反射/序列化被裁掉 -->
+    <PublishSingleFile>false</PublishSingleFile>
+    <SelfContained>false</SelfContained>
+    <InvariantGlobalization>false</InvariantGlobalization>
+
+    <!-- 不把 NuGet 警告当错误，但保留可见性 -->
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <EnableWindowsTargeting>true</EnableWindowsTargeting>
+
+    <!-- 阻止旧版 SharpCompress 被意外解析（含已知漏洞公告） -->
+    <NuGetAudit>true</NuGetAudit>
+    <NuGetAuditLevel>high</NuGetAuditLevel>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- SharpCompress: 纯托管实现，可读 .zip / .7z / .rar / .tar / .gz，无需外部 7z.exe -->
+    <PackageReference Include="SharpCompress" Version="0.39.0" />
+  </ItemGroup>
+
+</Project>
